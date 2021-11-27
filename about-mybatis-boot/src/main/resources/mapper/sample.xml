@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.hyunsoo.aboutmybatisboot.mapper.CompanyMapper">
+
+    <resultMap id="companyResult" type="me.hyunsoo.aboutmybatisboot.beans.Company">
+        <result column="id" property="id"/>
+        <result column="company_name" property="name"/>
+        <result column="company_address" property="address"/>
+    </resultMap>
+
+
+    <select id="getAllByXml" resultMap="companyResult">
+            SELECT * FROM COMPANY
+     </select>
+
+
+    <insert id="insertByXml" parameterType="me.hyunsoo.aboutmybatisboot.beans.Company" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO COMPANY(COMPANY_NAME, COMPANY_ADDRESS)
+        VALUES(#{name}, #{address})
+    </insert>
+</mapper>
